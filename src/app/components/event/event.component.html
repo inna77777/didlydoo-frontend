@@ -1,0 +1,63 @@
+<div>
+  <header>
+    <h1>Didlydoo</h1>
+  </header>
+  <!-- Conteneur principal -->
+  <app-create-event
+    (eventCreated)="handleEventCreated($event)"
+  ></app-create-event>
+
+  <div *ngIf="isLoading" class="spinner-overlay">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Liste des événements -->
+  <div *ngFor="let event of events" class="eventWrapper">
+    <div class="eventDetails">
+      <h3 class="eventHeading">{{ event.name }} by {{ event.author }}</h3>
+      <div class="eventActions">
+        <fa-icon
+          [icon]="faPencil"
+          class="modifyEventIcon"
+          (click)="editEvent(event)"
+        ></fa-icon>
+        <fa-icon
+          [icon]="faTrash"
+          class="deleteEventIcon"
+          (click)="deleteEvent(event)"
+        ></fa-icon>
+      </div>
+    </div>
+    <p>{{ event.description }}</p>
+
+    <button
+      class="showHideAvailabilityBtn"
+      (click)="toggleAvailabilities(event.id)"
+    >
+      {{
+        selectedAvailabilityEventId === event.id
+          ? "Close Availabilities"
+          : "Show Availabilities"
+      }}
+    </button>
+    <app-event-availability
+      *ngIf="selectedAvailabilityEventId === event.id"
+      [event]="event"
+      [selectedAvailabilityEventId]="selectedAvailabilityEventId"
+      (attendanceSubmitted)="fetchEvents()"
+    />
+  </div>
+</div>
+
+<!-- Modal pour édition / suppression -->
+<div id="eventModal" class="modalOverlay" style="display: none">
+  <app-event-modal
+    [modalAction]="modalAction"
+    [eventToEdit]="eventToEdit"
+    [newDates]="newDates"
+    [initialDate]="initialDate"
+    (eventUpdated)="handleEventUpdated($event)"
+    (eventDeleted)="handleEventDeleted($event)"
+    (modalClosed)="closeModal()"
+  ></app-event-modal>
+</div>

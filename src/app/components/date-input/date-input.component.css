@@ -1,0 +1,51 @@
+#dateInputsWrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+  width: 400px;
+}
+
+.date-add-row,
+.date-entry-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100% !important;
+}
+
+.input-initial-date {
+  margin: 0 10px 0 0;
+  background-color: #f1f1f1;
+  transition: border-color 0.3s ease;
+}
+
+.input-added-date {
+  align-self: flex-start;
+  justify-self: flex-start;
+  margin: 0 10px 0 0;
+  background-color: #f1f1f1;
+  transition: border-color 0.3s ease;
+}
+
+.btn-remove-date {
+  padding: 10px 16px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-remove-date:hover {
+  background-color: darkred;
+}
+
+#btn-add-date {
+  align-self: center;
+  padding: 10px 15px;
+  margin: 0;
+}

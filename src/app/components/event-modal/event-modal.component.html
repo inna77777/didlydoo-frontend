@@ -1,0 +1,97 @@
+<div class="modal-container">
+  <!-- Modal Close Button -->
+  <span class="modal-close" (click)="closeModal()">&times;</span>
+
+  <!-- Title based on modal action -->
+  <h2>{{ modalAction === "edit" ? "Modify" : "Delete" }} Event</h2>
+
+  <!-- Edit Event Form -->
+  <div *ngIf="modalAction === 'edit' && eventToEdit">
+    <form class="event-form">
+      <!-- Event Name Input -->
+      <label for="inputEventName">Event Name:</label>
+      <input
+        id="inputEventName"
+        class="input-event-name"
+        type="text"
+        [(ngModel)]="eventToEdit.name"
+        placeholder="Event name"
+        name="name"
+        required
+      />
+      <br />
+
+      <!-- Author Input -->
+      <label for="inputEventAuthor">Author:</label>
+      <input
+        id="inputEventAuthor"
+        class="input-event-author"
+        type="text"
+        [(ngModel)]="eventToEdit.author"
+        placeholder="Event author"
+        name="author"
+        required
+      />
+      <br />
+
+      <!-- Description Input -->
+      <label for="inputEventDescription">Description:</label>
+      <textarea
+        id="inputEventDescription"
+        class="input-event-description"
+        [(ngModel)]="eventToEdit.description"
+        placeholder="Event description"
+        name="description"
+        required
+      ></textarea>
+      <br />
+
+      <!-- Dates Section -->
+      <label for="inputEventDates">Dates:</label>
+      <div class="date-input-wrapper">
+        <div class="datesContainer">
+          <!-- Existing Dates (disabled) -->
+          <div
+            class="date-input-container"
+            *ngFor="let date of eventToEdit.dates; let i = index"
+          >
+            <input
+              class="input-date"
+              type="date"
+              [value]="date.date"
+              disabled
+            />
+          </div>
+
+          <!-- New Dates Input -->
+          <app-date-input
+            [(initialDate)]="initialDate"
+            [(newDates)]="newDates"
+            (dateAdded)="onDateAdded($event)"
+            (dateRemoved)="onDateRemoved($event)"
+          ></app-date-input>
+        </div>
+      </div>
+
+      <!-- Save Changes Button -->
+      <div class="modal-button-row">
+        <button
+          type="button"
+          class="save-changes-btn"
+          (click)="updateEventDetails()"
+        >
+          Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Delete Event Confirmation -->
+  <div *ngIf="modalAction === 'delete'">
+    <p>Are you sure you want to delete this event?</p>
+    <div class="modal-button-row">
+      <button class="confirm-delete-btn" (click)="confirmDelete()">Yes</button>
+      <button class="cancel-delete-btn" (click)="closeModal()">No</button>
+    </div>
+  </div>
+</div>

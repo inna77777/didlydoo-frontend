@@ -1,0 +1,45 @@
+#createEventBtn {
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 20px auto;
+}
+
+#createEventBtn:hover {
+  background-color: #a0b0b8;
+}
+
+#createEventBtn.closeForm {
+  background-color: #a9a9a9;
+}
+
+#createEventBtn.closeForm:hover {
+  background-color: #808080;
+}
+
+.createEventFormHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#newEventForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#newEventForm input {
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+#newEventSubmit {
+  transition: background-color 0.3s ease-in-out;
+}
+#newEventSubmit:hover {
+  background-color: #d9eafd;
+}

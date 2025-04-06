@@ -1,0 +1,162 @@
+.eventHeading {
+  font-family: "Playfair Display", serif;
+}
+
+.datesWrapper {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.eventWrapper {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  margin: 20px auto;
+}
+
+.eventDetails {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.eventActions {
+  align-self: flex-start;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.showHideAvailabilityBtn {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: 20px;
+}
+
+.deleteEventIcon {
+  color: #c74349;
+  font-size: 20px;
+}
+
+.modifyEventIcon {
+  color: #7ecdd3;
+  font-size: 20px;
+  transition: color 0.3s ease-in-out;
+}
+
+.modifyEventIcon:hover {
+  color: #4a969d;
+  transition: color 0.3s ease-in-out;
+}
+
+.deleteEventIcon:hover {
+  color: #a8363b;
+}
+
+.modalOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-top: 60px;
+}
+
+.modalHeader h2 {
+  margin-bottom: 20px;
+}
+
+#confirmDeletionBtn {
+  background-color: #b3c8cf;
+  margin-right: 10px;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#confirmDeletionBtn:hover {
+  background-color: #a0b0b8;
+  transform: scale(1.05);
+}
+
+#cancelDeletionBtn {
+  background-color: #9abf80;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#cancelDeletionBtn:hover {
+  background-color: #88a66b;
+  transform: scale(1.05);
+}
+
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .eventWrapper {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .eventGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .eventGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .eventWrapper {
+    padding: 15px;
+    width: 100%;
+  }
+}
+
+.viewParticipantsBtn {
+  margin: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.attendeesSection {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+}

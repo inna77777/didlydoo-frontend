@@ -1,0 +1,28 @@
+<div class="createEventWrapper">
+  <!-- Button to show the form -->
+  <button *ngIf="!isFormVisible" id="createEventBtn" (click)="toggleForm()"> → Create a new event </button>
+
+  <!-- Event creation form -->
+  <div *ngIf="isFormVisible">
+    <!-- Button to close the form -->
+    <button id="createEventBtn" class="closeForm" (click)="toggleForm()"> → Close create form </button>
+
+    <div class="createEventFormHolder" style="display: flex">
+      <form id="newEventForm" (submit)="submitEvent()">
+        <input id="newEventName" type="text" placeholder="Event name" [(ngModel)]="newEvent.name" name="name" />
+
+        <!-- Dates inputs -->
+        <app-date-input
+          [(initialDate)]="initialDate"
+          [(newDates)]="newDates"
+          (dateAdded)="onDateAdded($event)"
+          (dateRemoved)="onDateRemoved($event)"
+        ></app-date-input>
+        <input id="newEventAuthor" type="text" placeholder="Author" [(ngModel)]="newEvent.author" name="author" />
+
+        <input id="newEventDescription" type="text" placeholder="Description" [(ngModel)]="newEvent.description" name="description" />
+        <input id="newEventSubmit" type="submit" value="Create Event" />
+      </form>
+    </div>
+  </div>
+</div>

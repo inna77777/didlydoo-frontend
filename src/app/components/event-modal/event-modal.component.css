@@ -1,0 +1,52 @@
+.modal-container {
+  background-color: #fff;
+  padding: 20px;
+  margin: 5% auto;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.modal-close,
+.modal-close-delete {
+  font-size: 30px;
+  float: right;
+  transform: translateY(-10px);
+}
+
+.event-form {
+  margin: 20px 0;
+}
+
+.input-event-name,
+.input-event-description,
+.input-event-author {
+  min-width: 100%;
+  max-width: 100%;
+  padding: 10px 20px;
+  margin: 10px 0;
+}
+
+.input-event-description {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.date-input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-button-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+

@@ -1,0 +1,39 @@
+<div id="dateInputsWrapper">
+  <!-- Date input section -->
+  <div class="date-add-row">
+    <!-- Bind the first date input -->
+    <input
+      id="inputInitialDate"
+      class="input-initial-date"
+      type="date"
+      [(ngModel)]="initialDate"
+      name="initialDate"
+    />
+    <button
+      id="btn-add-date"
+      type="button"
+      (click)="addNewDate(initialDate)"
+    >
+      +
+    </button>
+  </div>
+
+  <div
+    class="date-entry-row"
+    *ngFor="let dateObj of newDates; let i = index"
+  >
+    <input
+      type="date"
+      class="input-added-date"
+      [(ngModel)]="newDates[i].date"
+      name="newDate{{ i }}"
+    />
+    <button
+      type="button"
+      class="btn-remove-date"
+      (click)="removeNewDate(i)"
+    >
+      x
+    </button>
+  </div>
+</div>

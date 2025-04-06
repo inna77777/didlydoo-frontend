@@ -1,0 +1,54 @@
+<section
+  class="event-grid"
+  *ngIf="selectedAvailabilityEventId === event.id"
+  [style.grid-template-columns]="'1fr ' + '1fr '.repeat(event.dates.length)"
+  [style.grid-template-rows]="'repeat(' + (event.dates[0].attendees.length + 1) + ', auto)'"
+  style="display: grid; align-items: center"
+>
+  <!-- Empty top-left cell -->
+  <div style="grid-area: 1 / 1"></div>
+
+  <!-- Dates as column headers -->
+  <ng-container *ngFor="let date of event.dates; let dateIndex = index">
+    <h5 [style.grid-area]="'1 / ' + (dateIndex + 2)">{{ date.date }}</h5>
+  </ng-container>
+
+  <!-- Attendee names (only once) -->
+  <ng-container *ngFor="let attendee of event.dates[0]?.attendees; let attIndex = index">
+    <h6 [style.grid-area]="attIndex + 2 + ' / 1'">{{ attendee.name }}</h6>
+
+    <!-- Availability cells per date -->
+    <ng-container *ngFor="let date of event.dates; let dateIndex = index">
+      <div
+        class="availability-status"
+        [ngClass]="date.attendees[attIndex].available ? 'status-available' : 'status-unavailable'"
+        [style.grid-area]="attIndex + 2 + ' / ' + (dateIndex + 2)"
+      >
+        {{ date.attendees[attIndex].available ? '✔' : '✘' }}
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <!-- Username input & send button -->
+  <div class="availability-submit">
+    <input placeholder="User name" [(ngModel)]="username" />
+    <button (click)="sendAttendance(event)">+</button>
+  </div>
+
+  <!-- User availability toggle buttons -->
+  <ng-container *ngFor="let date of event.dates; let i = index">
+    <div class="availability-status">
+      <button
+        type="button"
+        class="availability-toggle-btn"
+        [ngClass]="{
+          'status-unavailable': !isAvailable(event.id, i),
+          'status-available': isAvailable(event.id, i)
+        }"
+        (click)="toggleAvailability(event.id, i)"
+      >
+        ✔
+      </button>
+    </div>
+  </ng-container>
+</section>

@@ -1,12 +1,11 @@
+// src/app/app.component.ts
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { EventComponent } from './components/event/event.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template: `<app-event></app-event>`,
+  standalone: true,
+  imports: [EventComponent],
 })
-export class AppComponent {
-  title = 'event-planner';
-}
+export class AppComponent {}
