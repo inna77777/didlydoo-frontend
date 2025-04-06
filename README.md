@@ -1,59 +1,58 @@
-# EventPlanner
+# Event Planner
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+## Live Demo
+You can check out the live demo of the project here:  
+[Event Planner Live Demo](https://thunderous-dusk-2a7de4.netlify.app/)
 
-## Development server
+## Description
+Event Planner is a simple application designed to help users plan and manage events. It allows users to create events, add dates to events, manage attendees, and track their availability for each event. The app provides API endpoints to interact with event data and attendees.
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
+## Features
+- Create events with multiple date options.
+- Edit or patch event details.
+- Delete events.
+- View a list of all attendees and the events they are attending.
+- Add dates to events after creation.
+- Add attendee availability for events.
+  
+## API Endpoints
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+| Method | Endpoint                   | Body                                                                                          | Response                                                                                                                                  |
+| ------ | -------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | /api/events/               |                                                                                               | A list of all the events                                                                                                                  |
+| GET    | /api/events/[id]           |                                                                                               | A single event                                                                                                                            |
+| GET    | /api/attendees/            |                                                                                               | Get a list of all the attendees, and the events they're attending                                                                         |
+| POST   | /api/events/               | `{ name: string, dates: array of dates ['YYYY-MM-DD'], author: string, description: string }` | Creates an event with `dates` as possibilities. You must provide an author, a name and a description for the event                        |
+| PATCH  | /api/events/[id]/          | `{ name: string (optional), author: string (optional), description: string (optional) }`      | Patches (edit) an event with the provided infos                                                                                           |
+| DELETE | /api/events/[id]/          |                                                                                               | Deletes an event                                                                                                                          |
+| POST   | /api/events/[id]/add_dates | `{ dates: array of dates ['YYYY-MM-DD'] }`                                                    | Add some possible dates to an event                                                                                                       |
+| POST   | /api/events/[id]/attend    | `{ name: string, dates : [ { date: date 'YYYY-MM-DD', available: boolean (true/false) } ] }`  | Add an attendance for the given event. You must provide the attendee's `name` and some availabilities, in the form of an array of object  |
+
+
+How to Get Started
+1. Clone the Repository
+  ```bash
+git clone https://github.com/inna77777/didlydoo-frontend.git
+```
+
+2.Navigate to the project directory:
+```bash
+cd didlydoo-frontend
+```
+3. Install Dependencies
+```bash
+npm install
+
+```
+4. Run project
+```bash
+npm start
+```
+
