@@ -4,7 +4,9 @@
   <section
     class="event-grid"
     *ngIf="selectedAvailabilityEventId === event.id"
-    [style.grid-template-columns]="'1fr ' + '1fr '.repeat(event.dates.length)"
+    [style.grid-template-columns]="
+      '200px ' + 'minmax(0, 150px) '.repeat(event.dates.length)
+    "
     [style.grid-template-rows]="
       'repeat(' + (event.dates[0].attendees.length + 1) + ', auto)'
     "

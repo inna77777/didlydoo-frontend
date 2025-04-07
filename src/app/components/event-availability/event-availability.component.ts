@@ -59,7 +59,7 @@ export class EventAvailabilityComponent {
           this.username = '';
           this.availabilitiesMap[event.id] = event.dates.map(() => false);
 
-          this.attendanceSubmitted.emit(); 
+          this.attendanceSubmitted.emit();
         },
         error: (err) => console.error('Error sending attendance:', err),
       });

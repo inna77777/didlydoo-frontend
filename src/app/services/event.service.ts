@@ -50,8 +50,6 @@ export class EventService {
       date: date.date,
       available: availabilityArray[index],
     }));
-    const dataForSent = console.log('formattedData', formattedData);
-
     return this.http.post(
       `${this.apiUrl}/${eventID}/attend`,
       {

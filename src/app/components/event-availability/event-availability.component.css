@@ -27,8 +27,8 @@
   min-width: max-content;
   display: none;
   row-gap: 20px;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-content: space-between;
+  grid-template-columns: repeat(auto-fit, minmax(0, 50px));
   margin: 20px 0;
 }
 .event-grid > div {
