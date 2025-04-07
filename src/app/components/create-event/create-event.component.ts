@@ -4,7 +4,7 @@ import { DateInputComponent } from '../date-input/date-input.component';
 import { FormsModule } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
 import { EventService } from '../../services/event.service';
-import { NgZone } from '@angular/core'; 
+import { NgZone } from '@angular/core';
 import { Event, DateAvailability } from '../../models/event.model';
 
 @Component({
@@ -80,16 +80,12 @@ export class CreateEventComponent {
           })
           .filter(Boolean),
       };
-
-      console.log('Event to be sent:', JSON.stringify(eventToAdd, null, 2));
-
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
       });
 
       this.eventService.createEvent(eventToAdd, { headers }).subscribe({
         next: () => {
-          console.log('Event created successfully');
           this.eventCreated.emit(eventToSubmit);
           this.resetForm();
         },
@@ -118,13 +114,11 @@ export class CreateEventComponent {
 
   onDateAdded(date: string) {
     this.newDates.push({ date, attendees: [] });
-    console.log('Date added:', date);
   }
 
   onDateRemoved(index: number) {
     if (index >= 0 && index < this.newDates.length) {
       this.newDates.splice(index, 1);
-      console.log('Date removed at index:', index);
     }
   }
 }

@@ -56,7 +56,6 @@ export class EventModalComponent {
       description: this.eventToEdit.description,
     };
 
-    console.log(updatedEvent);
     const existingDates = this.eventToEdit.dates.map((date) => date.date);
     const newAddedDates = this.newDates.filter(
       (newDate) => newDate.date && !existingDates.includes(newDate.date)
@@ -109,13 +108,11 @@ export class EventModalComponent {
 
   onDateAdded(date: string) {
     this.newDates.push({ date, attendees: [] });
-    console.log('Date added:', date);
   }
 
   onDateRemoved(index: number) {
     if (index >= 0 && index < this.newDates.length) {
       this.newDates.splice(index, 1);
-      console.log('Date removed at index:', index);
     }
   }
 }

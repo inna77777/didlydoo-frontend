@@ -1,11 +1,36 @@
+.scroll-hint {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 10px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.event-grid-wrapper {
+  overflow-x: auto;
+  max-width: 100%;
+  mask-image: linear-gradient(to right, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, black 90%, transparent);
+}
+
 .event-grid {
+  min-width: max-content;
   display: none;
   row-gap: 20px;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   margin: 20px 0;
 }
-
 .event-grid > div {
   display: flex;
   justify-content: center;

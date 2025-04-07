@@ -146,13 +146,9 @@ export class EventComponent implements OnInit {
     this.newDates = [];
     this.initialDate = '';
   }
-  onDateAdded(date: string) {
-    console.log('Date added:', date);
-  }
+  onDateAdded(date: string) {}
 
-  onDateRemoved(index: number) {
-    console.log('Date removed at index:', index);
-  }
+  onDateRemoved(index: number) {}
 
   handleEventCreated(newEvent: Event) {
     this.fetchEvents();
